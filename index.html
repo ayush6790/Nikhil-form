@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Form Example</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <style>
+     from style.css
+    </style> -->
+  </head>
+  <body>
+    <form id="myForm" class="form-container">
+      <div class="form-group did-floating-label-content">
+        <input
+          class="did-floating-input"
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder=" "
+        />
+        <label class="did-floating-label" for="name">Name (required)</label>
+        <div class="error">This field is required</div>
+      </div>
+
+      <div class="form-group did-floating-label-content">
+        <input
+          class="did-floating-input"
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder=" "
+        />
+        <label class="did-floating-label" for="email">Email (required)</label>
+        <div class="error">Please enter a valid email address</div>
+      </div>
+
+      <div class="form-group did-floating-label-content">
+        <input
+          class="did-floating-input"
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder=" "
+        />
+        <label class="did-floating-label" for="phone">Phone Number</label>
+        <div class="helper">Format: 123-456-7890</div>
+      </div>
+
+      <div class="form-group did-floating-label-content">
+        <input
+          class="did-floating-input"
+          type="date"
+          id="dob"
+          name="dob"
+          placeholder=" "
+        />
+        <label class="did-floating-label" for="dob">Date of Birth</label>
+      </div>
+
+      <div class="form-group did-floating-label-content full-width">
+        <select
+          class="did-floating-select"
+          id="category"
+          name="category"
+          onclick="this.setAttribute('value', this.value);"
+          placeholder=" "
+        >
+          <option value=""></option>
+          <option value="tech">Tech</option>
+          <option value="non-tech">Non-Tech</option>
+        </select>
+        <label class="did-floating-label" for="category">Category</label>
+      </div>
+
+      <div
+        id="techFields"
+        class="form-group did-floating-label-content hidden full-width"
+      >
+        <input
+          class="did-floating-input"
+          type="text"
+          id="programmingLanguage"
+          name="programmingLanguage"
+          placeholder=" "
+        />
+        <label class="did-floating-label" for="programmingLanguage"
+          >Programming Language</label
+        >
+      </div>
+
+      <div class="form-group did-floating-label-content full-width">
+        <input
+          style="padding-top: 8px"
+          class="did-floating-input"
+          type="file"
+          id="resume"
+          name="resume"
+          placeholder=" "
+          accept=".pdf,.doc,.docx"
+        />
+        <label class="did-floating-label" for="resume">Resume (optional)</label>
+        <div class="helper">Accepted formats: PDF, DOC, DOCX</div>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- <div class="form-items-container-wrapper"> -->
+    <div class="form-items-container" id="form-container">
+      <!-- Form items will be dynamically added here -->
+    </div>
+    <!-- </div> -->
+
+    <div id="selected-price">Total Price: $0</div>
+
+    <!-- <script>
+   from index.js
+    </script> -->
+    <script src="index.js"></script>
+  </body>
+</html>
