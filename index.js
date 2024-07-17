@@ -1,18 +1,18 @@
 const formItems = [
   {
-    id: "item1",
-    name: "Item 1",
+    id: "ITCA",
+    name: "1-ITCA IDP Booklet",
     bodyText: "This is some body text for Item 1.",
     options: [
-      { value: "option1-1", label: "$10 for 1 year", price: 10 },
-      { value: "option1-2", label: "$15 for 2 years ", price: 15 },
+      { value: "10", label: "$10 for 1 year", price: 10 },
+      { value: "15", label: "$15 for 2 years ", price: 15 },
     ],
     image:
       "https://img.freepik.com/free-photo/sports-car-driving-asphalt-road-night-generative-ai_188544-8052.jpg?t=st=1721233263~exp=1721236863~hmac=bebf7ea8588334a6e1889e9980c7e2a7233478ae2549d0c454679bb324a2af6f&w=1800",
   },
   {
     id: "item2",
-    name: "Item 2",
+    name: "2-Important !. Have the Soft Copy Of ITCA Victor Card (PDF)",
     bodyText: "This is some body text for Item 2.",
     options: [
       { value: "option2-1", label: "Option 2-1", price: 20 },
@@ -24,7 +24,7 @@ const formItems = [
   {
     id: "item3",
     name: "Item 3",
-    bodyText: "This is some body text for Item 3.",
+    bodyText: "15-30 Minutes URGENT Processing ..",
     options: [
       { value: "option3-1", label: "Option 3-1", price: 30 },
       { value: "option3-2", label: "Option 3-2", price: 35 },
@@ -88,27 +88,8 @@ function createFormItems(items) {
   });
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   createFormItems(formItems);
-
-//   document
-//     .getElementById("form-container")
-//     .addEventListener("change", updatePrice);
-
-//   document
-//     .getElementById("category")
-//     .addEventListener("change", function () {
-//       const techFields = document.getElementById("techFields");
-//       if (this.value === "tech") {
-//         techFields.classList.remove("hidden");
-//       } else {
-//         techFields.classList.add("hidden");
-//       }
-//     });
-// });
-
 function updatePrice() {
-  const selectedOptions = document.querySelectorAll('select[name="option"]');
+  const selectedOptions = document.querySelectorAll(".form-item select");
   let totalPrice = 0;
 
   selectedOptions.forEach((select) => {
@@ -118,22 +99,13 @@ function updatePrice() {
     }
   });
 
-  document.getElementById("selected-price").textContent = `$${totalPrice}`;
+  document.getElementById(
+    "selected-price"
+  ).textContent = `Total Price: $${totalPrice}`;
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   createFormItems(formItems);
-  document
-    .getElementById("form-container")
-    .addEventListener("change", updatePrice);
-
-  document.getElementById("category").addEventListener("change", function () {
-    const techFields = document.getElementById("techFields");
-    if (this.value === "tech") {
-      techFields.classList.remove("hidden");
-    } else {
-      techFields.classList.add("hidden");
-    }
-  });
 
   const form = document.getElementById("myForm");
   const inputs = form.querySelectorAll("input, select");
@@ -187,10 +159,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Include dynamically created select dropdown values
+    // Include dynamically created select dropdown values and handles names
     const dynamicSelects = document.querySelectorAll(".form-item select");
-    dynamicSelects.forEach((select, index) => {
-      data[`formItem_${index}_selection`] = select.value;
+    dynamicSelects.forEach((select) => {
+      const formItemId = select.getAttribute("name").replace("_selection", "");
+      data[`${formItemId}`] = select.value;
     });
 
     if (!formData.get("resume")) {
@@ -213,20 +186,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update price on option change
   form.addEventListener("change", updatePrice);
-
-  function updatePrice() {
-    const selectedOptions = document.querySelectorAll(".form-item select");
-    let totalPrice = 0;
-
-    selectedOptions.forEach((select) => {
-      const selectedOption = select.options[select.selectedIndex];
-      if (selectedOption && selectedOption.dataset.price) {
-        totalPrice += parseFloat(selectedOption.dataset.price);
-      }
-    });
-
-    document.getElementById(
-      "selected-price"
-    ).textContent = `Total Price: $${totalPrice}`;
-  }
 });
