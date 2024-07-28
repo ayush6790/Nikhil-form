@@ -1,124 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enhanced Form Example</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- <style>
-     from style.css
-    </style> -->
-  </head>
-  <body>
-    <form id="myForm" class="form-container">
-      <div class="form-group did-floating-label-content">
-        <input
-          class="did-floating-input"
-          type="text"
-          id="name"
-          name="name"
-          required
-          placeholder=" "
-        />
-        <label class="did-floating-label" for="name">Name (required)</label>
-        <div class="error">This field is required</div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Flow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="step1" class="step">
+            <h2>Select Copy Type</h2>
+            <button onclick="selectCopyType('hard')">Hard Copy ($10)</button>
+            <button onclick="selectCopyType('soft')">Soft Copy ($5)</button>
+        </div>
+        
+        <div id="step2-hard" class="step" style="display: none;">
+            <h2>Select Delivery Type (Hard Copy)</h2>
+            <button onclick="selectDeliveryType('urgent', 'hard')">Urgent ($20)</button>
+            <button onclick="selectDeliveryType('normal', 'hard')">Normal ($10)</button>
+        </div>
 
-      <div class="form-group did-floating-label-content">
-        <input
-          class="did-floating-input"
-          type="email"
-          id="email"
-          name="email"
-          required
-          placeholder=" "
-        />
-        <label class="did-floating-label" for="email">Email (required)</label>
-        <div class="error">Please enter a valid email address</div>
-      </div>
+        <div id="step2-soft" class="step" style="display: none;">
+            <h2>Select Delivery Type (Soft Copy)</h2>
+            <button onclick="selectDeliveryType('urgent', 'soft')">Urgent ($15)</button>
+            <button onclick="selectDeliveryType('normal', 'soft')">Normal ($5)</button>
+        </div>
 
-      <div class="form-group did-floating-label-content">
-        <input
-          class="did-floating-input"
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder=" "
-        />
-        <label class="did-floating-label" for="phone">Phone Number</label>
-        <div class="helper">Format: 123-456-7890</div>
-      </div>
+        <div id="step3-hard" class="step" style="display: none;">
+            <h2>Select Product (Hard Copy)</h2>
+            <button onclick="selectProduct('booklet-card', 'hard')">Booklet + Card ($50)</button>
+            <button onclick="selectProduct('booklet', 'hard')">Booklet ($35)</button>
+        </div>
 
-      <div class="form-group did-floating-label-content">
-        <input
-          class="did-floating-input"
-          type="date"
-          id="dob"
-          name="dob"
-          placeholder=" "
-        />
-        <label class="did-floating-label" for="dob">Date of Birth</label>
-      </div>
+        <div id="step3-soft" class="step" style="display: none;">
+            <h2>Select Product (Soft Copy)</h2>
+            <button onclick="selectProduct('booklet-card', 'soft')">Booklet + Card ($50)</button>
+            <button onclick="selectProduct('booklet', 'soft')">Booklet ($35)</button>
+        </div>
 
-      <div class="form-group did-floating-label-content full-width">
-        <select
-          class="did-floating-select"
-          id="category"
-          name="category"
-          onclick="this.setAttribute('value', this.value);"
-          placeholder=" "
-        >
-          <option value=""></option>
-          <option value="tech">Tech</option>
-          <option value="non-tech">Non-Tech</option>
-        </select>
-        <label class="did-floating-label" for="category">Category</label>
-      </div>
+        <div id="summary" class="step" style="display: none;">
+            <h2>Summary</h2>
+            <p id="summary-text"></p>
+        </div>
 
-      <div
-        id="techFields"
-        class="form-group did-floating-label-content hidden full-width"
-      >
-        <input
-          class="did-floating-input"
-          type="text"
-          id="programmingLanguage"
-          name="programmingLanguage"
-          placeholder=" "
-        />
-        <label class="did-floating-label" for="programmingLanguage"
-          >Programming Language</label
-        >
-      </div>
+        <!-- User detail form (this will be displayed after product selection) -->
+        <div id="user-details" class="step" style="display: none;">
+            <h2>User Details</h2>
+            <form id="user-form">
+              <div class="form-container">
+                  <div class="form-group did-floating-label-content">
+                      <input class="did-floating-input" type="text" id="fname" name="fname" required placeholder=" " />
+                      <label class="did-floating-label" for="fname">First Name (required)</label>
+                      <div class="error">This field is required</div>
+                  </div>
 
-      <div class="form-group did-floating-label-content full-width">
-        <input
-          style="padding-top: 8px"
-          class="did-floating-input"
-          type="file"
-          id="resume"
-          name="resume"
-          placeholder=" "
-          accept=".pdf,.doc,.docx"
-        />
-        <label class="did-floating-label" for="resume">Resume (optional)</label>
-        <div class="helper">Accepted formats: PDF, DOC, DOCX</div>
-      </div>
+                  <div class="form-group did-floating-label-content">
+                      <input class="did-floating-input" type="text" id="lname" name="lname" required placeholder=" " />
+                      <label class="did-floating-label" for="lname">Last Name (required)</label>
+                      <div class="error">This field is required</div>
+                  </div>
 
-      <button type="submit">Submit</button>
-    </form>
+                  <div class="form-group did-floating-label-content">
+                      <input class="did-floating-input" type="email" id="email" name="email" required placeholder=" " />
+                      <label class="did-floating-label" for="email">Email (required)</label>
+                      <div class="error">Please enter a valid email address</div>
+                  </div>
 
-    <!-- <div class="form-items-container-wrapper"> -->
-    <div class="form-items-container" id="form-container">
-      <!-- Form items will be dynamically added here -->
+                  <div class="form-group did-floating-label-content">
+                      <input class="did-floating-input" type="tel" id="phone" name="phone" placeholder=" " />
+                      <label class="did-floating-label" for="phone">Phone Number</label>
+                      <div class="helper">Format: 123-456-7890</div>
+                  </div>
+
+                  <div class="form-group did-floating-label-content">
+                      <input class="did-floating-input" type="date" id="dob" name="dob" placeholder=" " />
+                      <label class="did-floating-label" for="dob">Date of Birth</label>
+                  </div>
+
+                  <div class="form-group did-floating-label-content full-width">
+                      <select class="did-floating-select" id="category" name="category" onclick="this.setAttribute('value', this.value);">
+                          <option value=""></option>
+                          <option value="tech">Tech</option>
+                          <option value="non-tech">Non-Tech</option>
+                      </select>
+                      <label class="did-floating-label" for="category">Category</label>
+                  </div>
+
+                  <div id="techFields" class="form-group did-floating-label-content hidden full-width">
+                      <input class="did-floating-input" type="text" id="programmingLanguage" name="programmingLanguage" placeholder=" " />
+                      <label class="did-floating-label" for="programmingLanguage">Programming Language</label>
+                  </div>
+
+                  <div class="form-group did-floating-label-content full-width">
+                      <input style="padding-top: 8px" class="did-floating-input" type="file" id="resume" name="resume" placeholder=" " accept=".pdf,.doc,.docx" />
+                      <label class="did-floating-label" for="resume">Resume (optional)</label>
+                      <div class="helper">Accepted formats: PDF, DOC, DOCX</div>
+                  </div>
+
+                  <button type="submit">Submit</button>
+              </div>
+          </form>
+        </div>
+        
+        <!-- Payment step (this will be displayed after the user detail form) -->
+        <div id="payment" class="step" style="display: none;">
+            <h2>Payment</h2>
+            <p>Total cost: <span id="total-cost"></span></p>
+            <button onclick="completePayment()">Complete Payment</button>
+        </div>
     </div>
-    <!-- </div> -->
 
-    <div id="selected-price">Total Price: $0</div>
-
-    <!-- <script>
-   from index.js
-    </script> -->
     <script src="index.js"></script>
-  </body>
+</body>
 </html>
