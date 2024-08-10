@@ -4,10 +4,167 @@ body {
   padding: 20px;
 }
 
-.container {
-  width: 50%;
+.main-container {
+  width: 85%;
   margin: 0 auto;
+}
+
+.left-container {
+  /* padding: 1.5rem; */
+  border-radius: 1.25rem;
+  /* border: 1px solid #ccc; */
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px; */
+  /* background-color: #e8ebf0; */
+  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; */
+}
+
+/* right side css */
+
+.banner {
+  width: 60%;
+  object-fit: cover;
+  border-radius: 1rem;
+  height: 360px;
+  filter: brightness(0.85);
+}
+
+.banner:hover {
+  filter: brightness(1);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.right-container {
+  max-width: 100%;
+}
+
+.info {
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding around the content */
+  display: flex;
+  /* align-items: center; */
+}
+
+.info i {
+  font-size: 20px; /* Size of the icon */
+  margin-top: 10px;
+  margin-right: 12px; /* Space between icon and text */
+}
+
+.info h5 {
+  color: #333; /* Dark gray text color */
+  margin: 0; /* Remove default margin */
+  font-weight: 600; /* Semi-bold text */
+}
+
+.info-text {
+  font-size: 12px; /* Description font size */
+  color: #666; /* Medium gray text color */
+  margin-top: 5px; /* Space above the text */
+  line-height: 1.5; /* Line spacing for better readability */
+  width: 65%;
+}
+
+/* button css */
+/* From Uiverse.io by cssbuttons-io */
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+button.learn-more {
+  width: 14rem;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
+button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #282936;
+  border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.115rem;
+  height: 0.115rem;
+  background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #282936;
+  font-weight: 700;
+  line-height: 1.6;
   text-align: center;
+  text-transform: uppercase;
+}
+
+button:hover .circle {
+  width: 100%;
+}
+
+button:hover .circle .icon.arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+  color: #fff;
+}
+
+/* button css end */
+
+.container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  margin-top: 2rem;
+  justify-items: "center";
+  grid-gap: 2rem;
 }
 
 .form-container {
@@ -105,8 +262,8 @@ select.did-floating-select::-ms-expand {
   background-size: 8px 6px;
 }
 
-input.did-floating-input[type='date']::-webkit-inner-spin-button,
-input.did-floating-input[type='date']::-webkit-calendar-picker-indicator {
+input.did-floating-input[type="date"]::-webkit-inner-spin-button,
+input.did-floating-input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
@@ -129,58 +286,311 @@ input.did-floating-input[type='date']::-webkit-calendar-picker-indicator {
   left: 0;
 }
 
-
-.step {
-  margin: 20px 0;
-}
-
-button {
-  background-color: #3d85d8;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  margin: 5px;
-}
-
-button:hover {
-  background-color: #1e4c82;
-}
-
-.card-containter {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* padding: 14px; */
+  /* max-width: 600px; */
+  /* margin: 0 auto; */
 }
 
 .card {
-  background-color: white;
+  background-color: #ffffff;
   padding: 20px;
-  margin: 10px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.card.selected {
-  border: 2px solid #1e4c82;
-  background-color: #a6ccf8;
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  /* transform: translateY(-2px); */
 }
 
-.card h3 {
+.card p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
   margin-bottom: 10px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }
 
 .card select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
-  border: 1px solid #3d85d8;
-  border-radius: 4px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s ease;
 }
+
 .card select:focus-visible {
   outline: none;
+  border-color: #007bff;
+}
+
+.card .addons {
+  /* margin-top: 15px; */
+  padding-top: 15px;
+  border-top: 1px solid #eaeaea;
+}
+
+.card .addons label {
+  font-size: 16px;
+  color: #555555;
+  display: block;
+  /* margin-bottom: 10px; */
+}
+
+.card .addons input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* summary css */
+
+/* stepper css */
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 20px 0;
+  list-style-type: none;
+}
+
+.step-indicator ul {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.step-indicator li {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.step-indicator .circle {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.step-indicator .label {
+  font-size: 14px;
+  color: #666;
+}
+
+.step-indicator .active .circle,
+.step-indicator .completed .circle {
+  background-color: #4f4caf;
+}
+
+.step-indicator .active .label,
+.step-indicator .completed .label {
+  color: #4caf50;
+}
+
+.step-indicator .inactive .circle {
+  background-color: #ddd;
+}
+
+.step-indicator .inactive .label {
+  color: #bbb;
+}
+
+.step-indicator li::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background-color: #ddd;
+  z-index: -1;
+}
+
+.step-indicator li::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 0;
+  width: 50%;
+  height: 2px;
+  background-color: #ddd;
+  z-index: -1;
+}
+
+.step-indicator li:first-child::before {
+  content: none;
+}
+
+.step-indicator li:last-child::after {
+  content: none;
+}
+
+.step-indicator .completed::before,
+.step-indicator .completed::after {
+  background-color: #9421a3;
+}
+
+.step-indicator .active::before {
+  background-color: #401e8a;
+}
+
+@media (max-width: 768px) {
+  .step-indicator .circle {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  .step-indicator .label {
+    font-size: 12px;
+  }
+}
+
+/* next button css */
+
+.next-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-ui {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px 8px 16px;
+  gap: 8px;
+  height: 40px;
+  width: 128px;
+  border: none;
+  background: #056bfa27;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.lable-next {
+  /* margin-top: 1px; */
+  font-size: 18px;
+  line-height: 22px;
+  color: #056dfa;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.button-ui:hover {
+  background: #056bfa49;
+}
+
+.button-ui:hover .svg-icon {
+  animation: spin 1s linear infinite;
+}
+
+/* General Styles for the Sections */
+#summary,
+#payment {
+  display: none; /* Hidden by default, shown via JavaScript */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  margin-top: 20px;
+  /* max-width: 800px; */
+  /* margin: 20px auto; */
+}
+
+#summary {
+  border-left: 5px solid #1e4c82;
+}
+
+#payment {
+  border-left: 5px solid #4caf50;
+}
+
+/* Summary Text Styling */
+#summary-text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #333333;
+}
+
+#summary-text br {
+  margin-bottom: 10px;
+}
+
+/* Styling for Header and Payment */
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1e4c82;
+  margin-bottom: 15px;
+}
+
+/* Ensure Buttons or Payment Details Inside Payment Section Are Styled */
+#payment .button {
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#payment .button:hover {
+  background-color: #388e3c;
+}
+
+/* shipping select */
+
+.shipping {
+  margin-top: 2rem;
+}
+
+.shipping label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e4c82;
+}
+
+select {
+  width: 80%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.fee-display {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+#fee-amount {
+  color: rgb(7, 170, 7);
+}
+
+.selected-info {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
 }

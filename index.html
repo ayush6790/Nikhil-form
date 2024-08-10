@@ -5,320 +5,486 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Flow</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="container">
-      <div id="step1" class="step">
-        <h2>Select Copy Type</h2>
-        <button onclick="selectCopyType('hard')">Hard Copy ($10)</button>
-        <button onclick="selectCopyType('soft')">Soft Copy ($5)</button>
+    <div class="main-container">
+      <div id="step-indicator" class="step-indicator">
+        <ul>
+          <li id="step1-indicator" class="active">
+            <div class="circle">1</div>
+            <div class="label">Step 1: Select Copy Type</div>
+          </li>
+          <li id="step2-indicator" class="inactive">
+            <div class="circle">2</div>
+            <div class="label">Step 2: Select Delivery Type</div>
+          </li>
+          <li id="step3-indicator" class="inactive">
+            <div class="circle">3</div>
+            <div class="label">Step 3: Select Product</div>
+          </li>
+          <li id="step4-indicator" class="inactive">
+            <div class="circle">4</div>
+            <div class="label">Step 4: Review & Submit</div>
+          </li>
+          <li id="step5-indicator" class="inactive">
+            <div class="circle">5</div>
+            <div class="label">Step 5: Payment</div>
+          </li>
+        </ul>
       </div>
 
-      <div id="step2-hard" class="step" style="display: none">
-        <h2>Select Delivery Type (Hard Copy)</h2>
-        <button onclick="selectDeliveryType('urgent', 'hard')">
-          Urgent ($20)
-        </button>
-        <button onclick="selectDeliveryType('normal', 'hard')">
-          Normal ($10)
-        </button>
-      </div>
+      <div class="container">
+        <div class="left-container">
+          <div id="step1" class="step">
+            <h2>Select Copy Type</h2>
 
-      <div id="step2-soft" class="step" style="display: none">
-        <h2>Select Delivery Type (Soft Copy)</h2>
-        <button onclick="selectDeliveryType('urgent', 'soft')">
-          Urgent ($15)
-        </button>
-        <button onclick="selectDeliveryType('normal', 'soft')">
-          Normal ($5)
-        </button>
-      </div>
+            <button class="learn-more" onclick="selectCopyType('hard')">
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">Hard Copy ($10)</span>
+            </button>
+            <button class="learn-more" onclick="selectCopyType('soft')">
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">Soft Copy ($5)</span>
+            </button>
 
-      <div id="step3-soft" class="step" style="display: none">
-        <h2>Select Product (Soft Copy)</h2>
-        <div class="card-container">
-          <div class="card" id="soft-booklet-card">
-            <p>Booklet + Card</p>
-            <select
-              id="soft-booklet-card"
-              onchange="updateProductSelection('soft', 'booklet-card')"
-            >
-              <option value="">Select validity year</option>
-              <option value="1">1 Year - $50</option>
-              <option value="2">2 Years - $90</option>
-              <option value="3">3 Years - $120</option>
-            </select>
-            <div
-              class="addons"
-              id="soft-booklet-card-addons"
-              style="display: none"
-            >
-              <label
-                ><input type="checkbox" name="addon" value="card-png" /> Card in
-                PNG format - $10</label
-              ><br />
-              <label
-                ><input
-                  type="checkbox"
-                  name="addon"
-                  value="professional-road-guide"
-                />
-                Professional road guide - $15</label
-              ><br />
-            </div>
-          </div>
-          <div class="card" id="soft-booklet">
-            <p>Booklet</p>
-            <select
-              id="soft-booklet"
-              onchange="updateProductSelection('soft', 'booklet')"
-            >
-              <option value="">Select validity year</option>
-              <option value="1">1 Year - $35</option>
-              <option value="2">2 Years - $65</option>
-              <option value="3">3 Years - $90</option>
-            </select>
-            <div class="addons" id="soft-booklet-addons" style="display: none">
-              <label
-                ><input type="checkbox" name="addon" value="card-pdf" /> Card
-                (PDF) - $8</label
-              ><br />
-              <label
-                ><input
-                  type="checkbox"
-                  name="addon"
-                  value="professional-road-guide"
-                />
-                Professional road guide - $15</label
-              ><br />
-            </div>
-          </div>
-        </div>
-        <button onclick="nextStep('soft')">Next</button>
-      </div>
-
-      <div id="step3-hard" class="step" style="display: none">
-        <h2>Select Product (Hard Copy)</h2>
-        <div class="card-container">
-          <div class="card" id="hard-booklet-card-card">
-            <p>Booklet + Card</p>
-            <select
-              id="hard-booklet-card"
-              onchange="updateProductSelection('hard', 'booklet-card')"
-            >
-              <option value="">Select validity year</option>
-              <option value="1">1 Year - $50</option>
-              <option value="2">2 Years - $90</option>
-              <option value="3">3 Years - $120</option>
-            </select>
-            <div
-              class="addons"
-              id="hard-booklet-card-addons"
-              style="display: none"
-            >
-              <label
-                ><input
-                  type="checkbox"
-                  name="addon"
-                  value="physical-booklet-card"
-                />
-                Additional physical booklet + card - $20</label
-              ><br />
-              <label
-                ><input type="checkbox" name="addon" value="softcopy-pdf" />
-                Booklet softcopy (PDF) - $12</label
-              ><br />
-              <label
-                ><input
-                  type="checkbox"
-                  name="addon"
-                  value="professional-road-guide"
-                />
-                Professional road guide - $15</label
-              ><br />
-              <label
-                ><input type="checkbox" name="addon" value="soft-copy-card" />
-                Soft copy card - $5</label
+            <div class="shipping">
+              <label for="shipping-country"
+                >Select your shipping country:</label
               >
-            </div>
-          </div>
-          <div class="card" id="hard-booklet">
-            <p>Booklet</p>
-            <select
-              id="hard-booklet"
-              onchange="updateProductSelection('hard', 'booklet')"
-            >
-              <option value="">Select validity year</option>
-              <option value="1">1 Year - $35</option>
-              <option value="2">2 Years - $65</option>
-              <option value="3">3 Years - $90</option>
-            </select>
-            <div class="addons" id="hard-booklet-addons" style="display: none">
-              <label
-                ><input
-                  type="checkbox"
-                  name="addon"
-                  value="additional-itca-booklet"
-                />
-                One additional ITCA booklet - $25</label
-              ><br />
-              <label
-                ><input
-                  type="checkbox"
-                  name="addon"
-                  value="itca-softcopy-pdf"
-                />
-                ITCA booklet softcopy (PDF) - $10</label
-              ><br />
-              <label
-                ><input
-                  type="checkbox"
-                  name="addon"
-                  value="professional-road-guide"
-                />
-                Professional road guide - $15</label
-              >
-            </div>
-          </div>
-        </div>
-        <button onclick="nextStep('hard')">Next</button>
-      </div>
-
-      <div id="summary" class="step" style="display: none">
-        <h2>Summary</h2>
-        <p id="summary-text"></p>
-      </div>
-
-      <!-- User detail form (this will be displayed after product selection) -->
-      <div id="user-details" class="step" style="display: none">
-        <h2>User Details</h2>
-        <form id="user-form">
-          <div class="form-container">
-            <div class="form-group did-floating-label-content">
-              <input
-                class="did-floating-input"
-                type="text"
-                id="fname"
-                name="fname"
-                required
-                placeholder=" "
-              />
-              <label class="did-floating-label" for="fname"
-                >First Name (required)</label
-              >
-              <div class="error">This field is required</div>
-            </div>
-
-            <div class="form-group did-floating-label-content">
-              <input
-                class="did-floating-input"
-                type="text"
-                id="lname"
-                name="lname"
-                required
-                placeholder=" "
-              />
-              <label class="did-floating-label" for="lname"
-                >Last Name (required)</label
-              >
-              <div class="error">This field is required</div>
-            </div>
-
-            <div class="form-group did-floating-label-content">
-              <input
-                class="did-floating-input"
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder=" "
-              />
-              <label class="did-floating-label" for="email"
-                >Email (required)</label
-              >
-              <div class="error">Please enter a valid email address</div>
-            </div>
-
-            <div class="form-group did-floating-label-content">
-              <input
-                class="did-floating-input"
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder=" "
-              />
-              <label class="did-floating-label" for="phone">Phone Number</label>
-              <div class="helper">Format: 123-456-7890</div>
-            </div>
-
-            <div class="form-group did-floating-label-content">
-              <input
-                class="did-floating-input"
-                type="date"
-                id="dob"
-                name="dob"
-                placeholder=" "
-              />
-              <label class="did-floating-label" for="dob">Date of Birth</label>
-            </div>
-
-            <div class="form-group did-floating-label-content full-width">
-              <select
-                class="did-floating-select"
-                id="category"
-                name="category"
-                onclick="this.setAttribute('value', this.value);"
-              >
-                <option value=""></option>
-                <option value="tech">Tech</option>
-                <option value="non-tech">Non-Tech</option>
+              <select id="shipping-country">
+                <option value="" disabled selected>Select a country</option>
+                <option value="europe">Europe</option>
+                <option value="india">India</option>
+                <option value="malaysia">Malaysia</option>
+                <option value="others">Others</option>
               </select>
-              <label class="did-floating-label" for="category">Category</label>
-            </div>
 
-            <div
-              id="techFields"
-              class="form-group did-floating-label-content hidden full-width"
-            >
-              <input
-                class="did-floating-input"
-                type="text"
-                id="programmingLanguage"
-                name="programmingLanguage"
-                placeholder=" "
-              />
-              <label class="did-floating-label" for="programmingLanguage"
-                >Programming Language</label
-              >
+              <div id="shipping-fee" class="fee-display">
+                Shipping Fee: <span id="fee-amount">$0</span>
+              </div>
             </div>
-
-            <div class="form-group did-floating-label-content full-width">
-              <input
-                style="padding-top: 8px"
-                class="did-floating-input"
-                type="file"
-                id="resume"
-                name="resume"
-                placeholder=" "
-                accept=".pdf,.doc,.docx"
-              />
-              <label class="did-floating-label" for="resume"
-                >Resume (optional)</label
-              >
-              <div class="helper">Accepted formats: PDF, DOC, DOCX</div>
-            </div>
-
-            <button type="submit">Submit</button>
+            <!-- <button  onclick="selectCopyType('hard')">Hard Copy ($10)</button>
+            <button onclick="selectCopyType('soft')">Soft Copy ($5)</button> -->
           </div>
-        </form>
-      </div>
 
-      <!-- Payment step (this will be displayed after the user detail form) -->
-      <div id="payment" class="step" style="display: none">
-        <h2>Payment</h2>
-        <pre id="breakdown"></pre>
-        <p>Total cost: <span id="total-cost"></span></p>
-        <button onclick="completePayment()">Complete Payment</button>
+          <div id="step2-hard" class="step" style="display: none">
+            <h2>Select Delivery Type (Hard Copy)</h2>
+            <button
+              class="learn-more"
+              id="urgent-hard"
+              data-copytype="hard"
+              onclick="selectDeliveryType('urgent', 'hard')"
+            >
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text"> Urgent ($20)</span>
+            </button>
+
+            <button
+              class="learn-more"
+              onclick="selectDeliveryType('normal', 'hard')"
+            >
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text"> Normal ($10)</span>
+            </button>
+
+            <!-- <button
+              id="urgent-hard"
+              data-copytype="hard"
+              onclick="selectDeliveryType('urgent', 'hard')"
+            >
+              Urgent ($20)
+            </button> -->
+            <!-- <button onclick="selectDeliveryType('normal', 'hard')">
+              Normal ($10)
+            </button> -->
+          </div>
+          <span
+            id="urgent-hard-helper"
+            style="display: none; color: red"
+          ></span>
+
+          <div id="step2-soft" class="step" style="display: none">
+            <h2>Select Delivery Type (Soft Copy)</h2>
+
+            <button
+              class="learn-more"
+              id="urgent-soft"
+              data-copytype="soft"
+              onclick="selectDeliveryType('urgent', 'soft')"
+            >
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text"> Urgent ($15)</span>
+            </button>
+
+            <button
+              class="learn-more"
+              onclick="selectDeliveryType('normal', 'soft')"
+            >
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text"> Normal ($5)</span>
+            </button>
+
+            <!-- <button
+              id="urgent-soft"
+              data-copytype="soft"
+              onclick="selectDeliveryType('urgent', 'soft')"
+            >
+              Urgent ($15)
+            </button> -->
+            <!-- <button onclick="selectDeliveryType('normal', 'soft')">
+              Normal ($5)
+            </button> -->
+          </div>
+          <span
+            id="urgent-soft-helper"
+            style="display: none; color: red"
+          ></span>
+
+          <div id="step3-soft" class="step" style="display: none">
+            <h2>Select Product (Soft Copy)</h2>
+            <div class="card-container">
+              <div class="card" id="soft-booklet-card-card">
+                <p>Booklet + Card</p>
+                <select
+                  id="soft-booklet-card"
+                  onchange="updateProductSelection('soft', 'booklet-card')"
+                >
+                  <option value="">Select validity year</option>
+                  <option value="1">1 Year - $50</option>
+                  <option value="2">2 Years - $90</option>
+                  <option value="3">3 Years - $120</option>
+                </select>
+                <div
+                  class="addons"
+                  id="soft-booklet-card-addons"
+                  style="display: none"
+                >
+                  <label
+                    ><input type="checkbox" name="addon" value="card-png" />
+                    Card in PNG format - $10</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="professional-road-guide"
+                    />
+                    Professional road guide - $15</label
+                  ><br />
+                </div>
+              </div>
+              <div class="card" id="soft-booklet-card">
+                <p>Booklet</p>
+                <select
+                  id="soft-booklet"
+                  onchange="updateProductSelection('soft', 'booklet')"
+                >
+                  <option value="">Select validity year</option>
+                  <option value="1">1 Year - $35</option>
+                  <option value="2">2 Years - $65</option>
+                  <option value="3">3 Years - $90</option>
+                </select>
+                <div
+                  class="addons"
+                  id="soft-booklet-addons"
+                  style="display: none"
+                >
+                  <label
+                    ><input type="checkbox" name="addon" value="card-pdf" />
+                    Card (PDF) - $8</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="professional-road-guide"
+                    />
+                    Professional road guide - $15</label
+                  ><br />
+                </div>
+              </div>
+            </div>
+
+            <div class="next-button">
+              <button class="button-ui" onclick="nextStep('soft')">
+                <span class="lable-next">Next</span>
+              </button>
+            </div>
+            <!-- <button onclick="nextStep('soft')">Next</button> -->
+          </div>
+
+          <div id="step3-hard" class="step" style="display: none">
+            <h2>Select Product (Hard Copy)</h2>
+            <div class="card-container">
+              <div class="card" id="hard-booklet-card-card">
+                <p>Booklet + Card</p>
+                <select
+                  id="hard-booklet-card"
+                  onchange="updateProductSelection('hard', 'booklet-card')"
+                >
+                  <option value="">Select validity year</option>
+                  <option value="1">1 Year - $50</option>
+                  <option value="2">2 Years - $90</option>
+                  <option value="3">3 Years - $120</option>
+                </select>
+                <div
+                  class="addons"
+                  id="hard-booklet-card-addons"
+                  style="display: none"
+                >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="physical-booklet-card"
+                    />
+                    Additional physical booklet + card - $20</label
+                  ><br />
+                  <label
+                    ><input type="checkbox" name="addon" value="softcopy-pdf" />
+                    Booklet softcopy (PDF) - $12</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="professional-road-guide"
+                    />
+                    Professional road guide - $15</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="soft-copy-card"
+                    />
+                    Soft copy card - $5</label
+                  >
+                </div>
+              </div>
+              <div class="card" id="hard-booklet-card">
+                <p>Booklet</p>
+                <select
+                  id="hard-booklet"
+                  onchange="updateProductSelection('hard', 'booklet')"
+                >
+                  <option value="">Select validity year</option>
+                  <option value="1">1 Year - $35</option>
+                  <option value="2">2 Years - $65</option>
+                  <option value="3">3 Years - $90</option>
+                </select>
+                <div
+                  class="addons"
+                  id="hard-booklet-addons"
+                  style="display: none"
+                >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="additional-itca-booklet"
+                    />
+                    One additional ITCA booklet - $25</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="itca-softcopy-pdf"
+                    />
+                    ITCA booklet softcopy (PDF) - $10</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="addon"
+                      value="professional-road-guide"
+                    />
+                    Professional road guide - $15</label
+                  >
+                </div>
+              </div>
+            </div>
+            <button onclick="nextStep('hard')">Next</button>
+          </div>
+
+          <div id="summary" class="step" style="display: none">
+            <h2>Summary</h2>
+            <p id="summary-text"></p>
+            <!-- <div  id="selected-info" class="selected-info"></div> -->
+          </div>
+
+          <!-- User detail form (this will be displayed after product selection) -->
+          <div id="user-details" class="step" style="display: none">
+            <h2>User Details</h2>
+            <form id="user-form">
+              <div class="form-container">
+                <div class="form-group did-floating-label-content">
+                  <input
+                    class="did-floating-input"
+                    type="text"
+                    id="fname"
+                    name="fname"
+                    required
+                    placeholder=" "
+                  />
+                  <label class="did-floating-label" for="fname"
+                    >First Name (required)</label
+                  >
+                  <div class="error">This field is required</div>
+                </div>
+
+                <div class="form-group did-floating-label-content">
+                  <input
+                    class="did-floating-input"
+                    type="text"
+                    id="lname"
+                    name="lname"
+                    required
+                    placeholder=" "
+                  />
+                  <label class="did-floating-label" for="lname"
+                    >Last Name (required)</label
+                  >
+                  <div class="error">This field is required</div>
+                </div>
+
+                <div class="form-group did-floating-label-content">
+                  <input
+                    class="did-floating-input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder=" "
+                  />
+                  <label class="did-floating-label" for="email"
+                    >Email (required)</label
+                  >
+                  <div class="error">Please enter a valid email address</div>
+                </div>
+
+                <div class="form-group did-floating-label-content">
+                  <input
+                    class="did-floating-input"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder=" "
+                  />
+                  <label class="did-floating-label" for="phone"
+                    >Phone Number</label
+                  >
+                  <div class="helper">Format: 123-456-7890</div>
+                </div>
+
+                <div class="form-group did-floating-label-content">
+                  <input
+                    class="did-floating-input"
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    placeholder=" "
+                  />
+                  <label class="did-floating-label" for="dob"
+                    >Date of Birth</label
+                  >
+                </div>
+
+                <div class="form-group did-floating-label-content full-width">
+                  <select
+                    class="did-floating-select"
+                    id="category"
+                    name="category"
+                    onclick="this.setAttribute('value', this.value);"
+                  >
+                    <option value=""></option>
+                    <option value="tech">Tech</option>
+                    <option value="non-tech">Non-Tech</option>
+                  </select>
+                  <label class="did-floating-label" for="category"
+                    >Category</label
+                  >
+                </div>
+
+                <div
+                  id="techFields"
+                  class="form-group did-floating-label-content hidden full-width"
+                >
+                  <input
+                    class="did-floating-input"
+                    type="text"
+                    id="programmingLanguage"
+                    name="programmingLanguage"
+                    placeholder=" "
+                  />
+                  <label class="did-floating-label" for="programmingLanguage"
+                    >Programming Language</label
+                  >
+                </div>
+
+                <div class="form-group did-floating-label-content full-width">
+                  <input
+                    style="padding-top: 8px"
+                    class="did-floating-input"
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    placeholder=" "
+                    accept=".pdf,.doc,.docx"
+                  />
+                  <label class="did-floating-label" for="resume"
+                    >Resume (optional)</label
+                  >
+                  <div class="helper">Accepted formats: PDF, DOC, DOCX</div>
+                </div>
+
+                <button type="submit" class="button-ui">Submit</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Payment step (this will be displayed after the user detail form) -->
+          <div id="payment" class="step" style="display: none">
+            <h2>Payment</h2>
+            <div id="breakdown"></div>
+            <p>Total cost: <span id="total-cost"></span></p>
+            <button onclick="completePayment()">Complete Payment</button>
+          </div>
+        </div>
+        <div class="right-container">
+          <image
+            class="banner"
+            src="https://img.freepik.com/free-photo/person-preparing-get-driver-license_23-2150167614.jpg?t=st=1723049784~exp=1723053384~hmac=8a216e41208dee44b71a163d36e096c416347e49c414ad7d32a30ff25986b9d2&w=360"
+          />
+          <div class="info">
+            <i class="fas fa-home"></i>
+            <div>
+              <h5>100% Money-back Guarantee</h5>
+
+              <p class="info-text">
+                Get full refund if our International Driving Permit do not meet
+                your expectations
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
