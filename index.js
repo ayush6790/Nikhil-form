@@ -33,6 +33,19 @@ const prices = {
   'additional-itca-booklet': 25,
   'itca-softcopy-pdf': 10
 };
+document.addEventListener('DOMContentLoaded', function () {
+  const hardCopyButton = document.getElementById('hard-copy-button');
+  const softCopyButton = document.getElementById('soft-copy-button');
+  const shippingSection = document.getElementById('shipping-section');
+
+  hardCopyButton.addEventListener('click', function () {
+    shippingSection.classList.remove('hidden');
+  });
+
+  softCopyButton.addEventListener('click', function () {
+    shippingSection.classList.add('hidden');
+  });
+});
 
 
 function getUKTime() {

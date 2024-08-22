@@ -55,10 +55,8 @@
               <span class="button-text">Soft Copy ($5)</span>
             </button>
 
-            <div class="shipping">
-              <label for="shipping-country"
-                >Select your shipping country:</label
-              >
+            <div id="shipping-section" class="shipping hidden">
+              <label for="shipping-country">Select your shipping country:</label>
               <select id="shipping-country">
                 <option value="" disabled selected>Select a country</option>
                 <option value="europe">Europe</option>
@@ -66,7 +64,7 @@
                 <option value="malaysia">Malaysia</option>
                 <option value="others">Others</option>
               </select>
-
+            
               <div id="shipping-fee" class="fee-display">
                 Shipping Fee: <span id="fee-amount">$0</span>
               </div>
@@ -321,7 +319,7 @@
                 </div>
               </div>
             </div>
-            <button onclick="nextStep('hard')">Next</button>
+            <button class="button-ui" onclick="nextStep('hard')">Next</button>
           </div>
 
           <div id="summary" class="step" style="display: none">
